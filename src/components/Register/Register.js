@@ -4,12 +4,11 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Container, Row, Col, Button, Alert } from 'react-bootstrap';
 import * as Yup from 'yup';
 
-import { AuthContext } from "../../contexts/AuthContext";
 import * as authService from "../../services/authService";
 import TextField from "../Inputs/TextField";
+import SelectField from "../Inputs/SelectField";
 
-const Login = () => {
-    const { userLogin } = useContext(AuthContext);
+const Register = () => {
     const navigate = useNavigate();
     const [flag, setFlag] = useState({text: '', check: false});
     const validate = Yup.object().shape({
@@ -19,25 +18,30 @@ const Login = () => {
         password: Yup.string()
             .min(4, 'Password must be more than 3 characters')
             .required('Required'),
+        repeatPassword: Yup.string()
+            .oneOf([Yup.ref('password'), null], 'Repeat password must match password')
+            .required('Repeat password is required'),
+        role: Yup.string()
+            .required('Role is required'),
     });
 
     return (
         <Container>
             <Row>
                 <Col>
-                    <h1>Login</h1>
+                    <h1>Register</h1>
                     <Formik 
-                        initialValues={{ username: '', password: '' }}
+                        initialValues={{ username: '', password: '', repeatPassword: '', role: 'user' }}
                         validationSchema={validate}
                         onSubmit={(values, { setSubmitting }) => {
-                            authService.login(values.username, values.password)
+                            authService.register(values.username, values.password, values.repeatPassword, values.role)
                                 .then(authData => {
-                                    userLogin(authData);
                                     setSubmitting(false);
-                                    navigate('/');
+                                    navigate('/login');
                                 })
                                 .catch(err => {
                                     setFlag({text: err.error, check: true});
+                                    console.log(err.error)
                                     
                                 });
                           }}
@@ -55,8 +59,10 @@ const Login = () => {
                                 {flag.check && <Alert variant="danger">{flag.text}</Alert>}
                                 <TextField label="Username" name="username" type="text" />
                                 <TextField label="Password" name="password" type="password" />
+                                <TextField label="Repeat password" name="repeatPassword" type="password" />
+                                <SelectField label="Role" name="role" />
 
-                                <Button variant="primary" type="submit">Login</Button>
+                                <Button variant="primary" type="submit">Register</Button>
                             </Form>
                         )}
                     </Formik>
@@ -66,4 +72,4 @@ const Login = () => {
     );
 }
 
-export default Login;
+export default Register;

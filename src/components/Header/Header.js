@@ -14,13 +14,14 @@ const Header = () => {
                     <Nav className="me-auto">
                         <Link className='nav-link' to="/">Home</Link>
                         <Link className='nav-link' to="/catalog">Catalog</Link>
-                        
+
                         {user.token
                             ? <>
                                 <Link className='nav-link' to="/logout">Logout</Link>
                             </>
                             : <>
                                 <Link className='nav-link' to="/login">Login</Link>
+                                <Link className='nav-link' to="/register">Register</Link>
                             </>
                         }
                     </Nav>
