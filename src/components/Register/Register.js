@@ -41,8 +41,6 @@ const Register = () => {
                                 })
                                 .catch(err => {
                                     setFlag({text: err.error, check: true});
-                                    console.log(err.error)
-                                    
                                 });
                           }}
                     >
