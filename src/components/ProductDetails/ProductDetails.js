@@ -1,10 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Alert, Button } from 'react-bootstrap';
 
 import * as productService from '../../services/productService';
+import * as cartService from '../../services/cartService';
+import { useAuthContext } from '../../contexts/AuthContext';
+import { CartContext, useCartContext } from '../../contexts/CartContext';
 
 const ProductDetails = () => {
+    const { user } = useAuthContext();
+    const { cart } = useCartContext();
+    const { userCart } = useContext(CartContext);
+    const navigate = useNavigate();
+    const [flag, setFlag] = useState({text: '', check: false});
     const [product , setProduct] = useState([]);
     const { productId } = useParams();
 
@@ -14,13 +22,47 @@ const ProductDetails = () => {
                 setProduct(result);
             })
             .catch(err => {
-                console.log(err);
+                setFlag(state => ({
+                    ...state,
+                    text: err.error, 
+                    check: true
+                }));
             });
     }, [productId])
+
+    const addToCartHandler = (productData) => {
+        const { _id, title, image, price, quantity } = productData;
+        const product = {
+            products: [
+                {
+                    productId: _id,
+                    title,
+                    image,
+                    price,
+                    quantity: 1
+                }
+            ]
+        }
+        const query = Object.keys(cart).length < 1 ? cartService.addToCart(product) : cartService.updateCart(product);
+
+        query
+            .then(result => {
+                userCart(result)
+                navigate('/cart');
+            })
+            .catch(err => {
+                setFlag(state => ({
+                    ...state,
+                    text: err, 
+                    check: true
+                }));
+            })
+    }
 
     return (
         <Container>
             <Row>
+                {flag.check && <Alert variant="danger">{flag.text}</Alert>}
                 <Col md={6}>
                     <img src={product.image} width="100%" alt="Product" />
                 </Col>
@@ -28,6 +70,10 @@ const ProductDetails = () => {
                     <h1>{product.title}</h1>
                     <p>{product.description}</p>
                     <p>Price: {product.price} lv.</p>
+                    {user.token &&
+                        <Button variant="primary" onClick={() => addToCartHandler(product)}>Add to cart</Button>
+                        // <Link to={'/cart'} className="btn btn-primary" onClick={() => addToCartHandler(product)}>Add to cart</Link>
+                    }
                 </Col>
             </Row>
         </Container>
