@@ -45,6 +45,10 @@ const ProductDetails = () => {
             });
     }
 
+    const orderHandler = () => {
+        
+    }
+
     return (
         <Container>
             <Row>
@@ -58,7 +62,7 @@ const ProductDetails = () => {
                 )}
                 <Button variant="primary" onClick={() => deleteCartHandler(cart._id)}>Empty cart</Button>
             </Row>
-            <Button variant="primary" onClick={() => orderHandler(cart._id)}>Order</Button>
+            <Button variant="primary" onClick={() => orderHandler()}>Order</Button>
         </Container>
     );
 }
