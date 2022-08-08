@@ -40,7 +40,11 @@ const Register = () => {
                                     navigate('/login');
                                 })
                                 .catch(err => {
-                                    setFlag({text: err.error, check: true});
+                                    setFlag(state => ({
+                                        ...state,
+                                        text: err.error, 
+                                        check: true
+                                    }));
                                 });
                           }}
                     >
