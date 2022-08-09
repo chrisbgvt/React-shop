@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import { Container, Row, Col, Alert, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { Container, Row, Alert, Button } from 'react-bootstrap';
 
 // import * as productService from '../../services/productService';
 import * as cartService from '../../services/cartService';
@@ -19,7 +19,8 @@ const ProductDetails = () => {
 
     let order = [];
     let totalPrice = 0;
-    items.map(x => (order.push(x.title), totalPrice += Number(x.price)))
+    items.map(x => order.push(x.title));
+    items.map(x => totalPrice += Number(x.price));
 
     useEffect(() => {
         cartService.getOne(cart._id)
@@ -33,7 +34,7 @@ const ProductDetails = () => {
                     check: true
                 }));
             });
-    }, [])
+    }, [cart._id])
 
     const deleteCartHandler = (cartId) => {
         cartService.removeCart(cartId)
@@ -63,6 +64,7 @@ const ProductDetails = () => {
                 }));
                 setItems([]);
                 removeCart();
+                navigate('/catalog');
             })
             .catch(err => {
                 setFlag(state => ({
@@ -77,7 +79,7 @@ const ProductDetails = () => {
         <Container>
             <Row>
                 {flag.check && <Alert variant="danger">{flag.text}</Alert>}
-                <Button variant="primary" onClick={() => deleteCartHandler(cart._id)}>Empty cart</Button>
+                <Button variant="primary my-3" onClick={() => deleteCartHandler(cart._id)}>Empty cart</Button>
                 {items.map(x => 
                     <CartItem key={x._id} product={x} />
                 )}

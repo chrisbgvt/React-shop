@@ -19,6 +19,7 @@ const Header = () => {
 
                         {user.token
                             ? <>
+                                <Link className='nav-link' to="/create">Create</Link>
                                 <Link className='nav-link' to={Object.keys(cart).length > 0 ? '/cart' : '/'}>
                                     Cart
                                     <Badge bg="primary" className={'ml-2'}>

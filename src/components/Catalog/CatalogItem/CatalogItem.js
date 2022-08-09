@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import { Card, Col } from 'react-bootstrap';
 
-const CatalogItem = ({product, openDetails}) => {
+const CatalogItem = ({product}) => {
     return (
-        <Col md={4}>
+        <Col md={4} className={'py-3'}>
             <Card>
                 <Card.Img variant="top" src={product.image} />
                 <Card.Body>

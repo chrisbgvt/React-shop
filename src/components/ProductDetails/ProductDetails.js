@@ -7,7 +7,7 @@ import * as cartService from '../../services/cartService';
 import { useAuthContext } from '../../contexts/AuthContext';
 import { CartContext, useCartContext } from '../../contexts/CartContext';
 
-const ProductDetails = () => {
+const ProductDetails = ({deleteHandler}) => {
     const { user } = useAuthContext();
     const { cart } = useCartContext();
     const { userCart } = useContext(CartContext);
@@ -59,6 +59,21 @@ const ProductDetails = () => {
             })
     }
 
+    const deleteProducttHandler = (itemId) => {
+        productService.remove(itemId)
+            .then(result => {
+                deleteHandler(result);
+                navigate('/catalog');
+            })
+            .catch(err => {
+                setFlag(state => ({
+                    ...state,
+                    text: err, 
+                    check: true
+                }));
+            })
+    }
+
     return (
         <Container>
             <Row>
@@ -80,6 +95,15 @@ const ProductDetails = () => {
                         
                         // <Link to={'/cart'} className="btn btn-primary" onClick={() => addToCartHandler(product)}>Add to cart</Link>
                     }
+                    
+                    <Col md={12} className={'d-flex justify-content-between mt-3'}>
+                        {user.userRole === 'admin' &&
+                            <>
+                                <Link to={`/edit/${product._id}`} className="btn btn-primary">Edit</Link>
+                                <Button variant="primary" onClick={() => deleteProducttHandler(productId)}>Delete</Button>
+                            </>
+                        }
+                    </Col>
                 </Col>
             </Row>
         </Container>
