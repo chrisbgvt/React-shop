@@ -7,6 +7,7 @@ import * as cartService from '../../services/cartService';
 import * as orderService from '../../services/orderService';
 // import { useAuthContext } from '../../contexts/AuthContext';
 import { CartContext, useCartContext } from '../../contexts/CartContext';
+import CartItem from './CartItem/CartItem';
 
 const ProductDetails = () => {
     // const { user } = useAuthContext();
@@ -15,6 +16,10 @@ const ProductDetails = () => {
     const { removeCart } = useContext(CartContext);
     const navigate = useNavigate();
     const [flag, setFlag] = useState({text: '', check: false});
+
+    let order = [];
+    let totalPrice = 0;
+    items.map(x => (order.push(x.title), totalPrice += Number(x.price)))
 
     useEffect(() => {
         cartService.getOne(cart._id)
@@ -47,9 +52,7 @@ const ProductDetails = () => {
     }
 
     const orderHandler = () => {
-        let order = [];
-        let totalPrice = 0;
-        items.map(x => (order.push(x.title), totalPrice += Number(x.price)))
+        
         
         orderService.completeOrder({titles: order, totalPrice})
             .then(result => {
@@ -74,16 +77,13 @@ const ProductDetails = () => {
         <Container>
             <Row>
                 {flag.check && <Alert variant="danger">{flag.text}</Alert>}
-                {items.map(x => 
-                    <Col key={x._id} md={12} className={'d-flex'}>
-                        <img src={x.image} />
-                        <p>{x.title}</p>
-                        <p>Price: {x.price} lv.</p>
-                    </Col>
-                )}
                 <Button variant="primary" onClick={() => deleteCartHandler(cart._id)}>Empty cart</Button>
+                {items.map(x => 
+                    <CartItem key={x._id} product={x} />
+                )}
+                <p className={'text-end'}>Total: {totalPrice} lv.</p>
+                <Button variant="primary mt-3" onClick={() => orderHandler()}>Order</Button>
             </Row>
-            <Button variant="primary" onClick={() => orderHandler()}>Order</Button>
         </Container>
     );
 }
