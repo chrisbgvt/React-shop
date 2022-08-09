@@ -4,6 +4,7 @@ import { Container, Row, Col, Alert, Button } from 'react-bootstrap';
 
 // import * as productService from '../../services/productService';
 import * as cartService from '../../services/cartService';
+import * as orderService from '../../services/orderService';
 // import { useAuthContext } from '../../contexts/AuthContext';
 import { CartContext, useCartContext } from '../../contexts/CartContext';
 
@@ -46,7 +47,27 @@ const ProductDetails = () => {
     }
 
     const orderHandler = () => {
+        let order = [];
+        let totalPrice = 0;
+        items.map(x => (order.push(x.title), totalPrice += Number(x.price)))
         
+        orderService.completeOrder({titles: order, totalPrice})
+            .then(result => {
+                setFlag(state => ({
+                    ...state,
+                    text: result.message, 
+                    check: true
+                }));
+                setItems([]);
+                removeCart();
+            })
+            .catch(err => {
+                setFlag(state => ({
+                    ...state,
+                    text: err.error, 
+                    check: true
+                }));
+            });
     }
 
     return (

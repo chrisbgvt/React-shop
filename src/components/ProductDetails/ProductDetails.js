@@ -71,7 +71,13 @@ const ProductDetails = () => {
                     <p>{product.description}</p>
                     <p>Price: {product.price} lv.</p>
                     {user.token &&
-                        <Button variant="primary" onClick={() => addToCartHandler(product)}>Add to cart</Button>
+                        <>
+                            {product.quantity === 0
+                                ? <span class="text-danger">Out of stock</span>
+                                : <Button variant="primary" onClick={() => addToCartHandler(product)}>Add to cart</Button>
+                            }
+                        </>
+                        
                         // <Link to={'/cart'} className="btn btn-primary" onClick={() => addToCartHandler(product)}>Add to cart</Link>
                     }
                 </Col>
