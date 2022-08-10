@@ -13,7 +13,7 @@ const Header = () => {
             <Container>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
+                    <Nav className="me-auto mx-auto">
                         <Link className='nav-link' to="/">Home</Link>
                         <Link className='nav-link' to="/catalog">Catalog</Link>
 
@@ -26,6 +26,7 @@ const Header = () => {
                                         {Object.keys(cart).length > 0 && cart.products.length}
                                     </Badge>
                                 </Link>
+                                <Link className='nav-link' to="/profile">{user.username}</Link>
                                 <Link className='nav-link' to="/logout">Logout</Link>
                             </>
                             : <>

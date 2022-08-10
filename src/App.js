@@ -16,6 +16,7 @@ import Logout from './components/Logout/Logout';
 import Cart from './components/Cart/Cart';
 import Create from './components/Create/Create';
 import Edit from './components/Edit/Edit';
+import Profile from './components/Profile/Profile';
 import PageNotFound from './components/PageNotFound/PageNotFound';
 
 function App() {
@@ -59,6 +60,7 @@ function App() {
                         <Route element={<AuthGuard />}>
                             <Route path="/logout" element={<Logout />} />
                             <Route path="/cart" element={<Cart />} />
+                            <Route path="/profile" element={<Profile />} />
                         </Route>
                         <Route element={<IsAdminGuard />}>
                             <Route path="/create" element={<Create createHandler={addProductHandler} />} />
