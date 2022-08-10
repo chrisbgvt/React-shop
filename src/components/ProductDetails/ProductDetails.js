@@ -6,6 +6,7 @@ import * as productService from '../../services/productService';
 import * as cartService from '../../services/cartService';
 import { useAuthContext } from '../../contexts/AuthContext';
 import { CartContext, useCartContext } from '../../contexts/CartContext';
+import DeleteModal from '../Modals/DeleteModal';
 
 const ProductDetails = ({deleteHandler}) => {
     const { user } = useAuthContext();
@@ -15,6 +16,10 @@ const ProductDetails = ({deleteHandler}) => {
     const [flag, setFlag] = useState({text: '', check: false});
     const [product , setProduct] = useState([]);
     const { productId } = useParams();
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     useEffect(() => {
         productService.getOne(productId)
@@ -59,7 +64,7 @@ const ProductDetails = ({deleteHandler}) => {
             })
     }
 
-    const deleteProducttHandler = (itemId) => {
+    const deleteProductHandler = (itemId) => {
         productService.remove(itemId)
             .then(result => {
                 deleteHandler(result);
@@ -78,6 +83,7 @@ const ProductDetails = ({deleteHandler}) => {
         <Container>
             <Row>
                 {flag.check && <Alert variant="danger">{flag.text}</Alert>}
+                <DeleteModal close={handleClose} show={show} del={deleteProductHandler} product={product} />
                 <Col md={6}>
                     <img src={product.image} width="100%" alt="Product" />
                 </Col>
@@ -100,7 +106,7 @@ const ProductDetails = ({deleteHandler}) => {
                         {user.userRole === 'admin' &&
                             <>
                                 <Link to={`/edit/${product._id}`} className="btn btn-primary">Edit</Link>
-                                <Button variant="primary" onClick={() => deleteProducttHandler(productId)}>Delete</Button>
+                                <Button variant="primary" onClick={handleShow}>Delete</Button>
                             </>
                         }
                     </Col>
