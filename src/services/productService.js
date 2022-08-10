@@ -7,3 +7,4 @@ export const getOne = (productId) => request.get(`${baseUrl}/${productId}`);
 export const create = (product) => request.post(baseUrl, product);
 export const edit = (product, productId) => request.put(`${baseUrl}/${productId}`, product);
 export const remove = (productId) => request.del(`${baseUrl}/${productId}`);
+export const getNewest = () => request.get(`${baseUrl}/newest`);
