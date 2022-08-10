@@ -84,7 +84,7 @@ const ProductDetails = () => {
                     <CartItem key={x._id} product={x} />
                 )}
                 <p className={'text-end'}>Total: {totalPrice} lv.</p>
-                <Button variant="primary mt-3" onClick={() => orderHandler()}>Order</Button>
+                <Button variant="primary mt-3 mb-5" onClick={() => orderHandler()}>Order</Button>
             </Row>
         </Container>
     );
