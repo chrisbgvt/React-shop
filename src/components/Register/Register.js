@@ -59,10 +59,10 @@ const Register = () => {
                         }) => (
                             <Form>
                                 {flag.check && <Alert variant="danger">{flag.text}</Alert>}
-                                <TextField label="Username" name="username" type="text" />
-                                <TextField label="Password" name="password" type="password" />
-                                <TextField label="Repeat password" name="repeatPassword" type="password" />
-                                <SelectField label="Role" name="role" />
+                                <TextField label="Username" name="username" type="text" onChange={handleChange} value={values.username} />
+                                <TextField label="Password" name="password" type="password" onChange={handleChange} value={values.password} />
+                                <TextField label="Repeat password" name="repeatPassword" type="password" onChange={handleChange} value={values.repeatPassword} />
+                                <SelectField label="Role" name="role" onChange={handleChange} value={values.role} />
 
                                 <Button variant="primary" type="submit">Register</Button>
                             </Form>

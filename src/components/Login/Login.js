@@ -56,8 +56,8 @@ const Login = () => {
                         }) => (
                             <Form>
                                 {flag.check && <Alert variant="danger">{flag.text}</Alert>}
-                                <TextField label="Username" name="username" type="text" />
-                                <TextField label="Password" name="password" type="password" />
+                                <TextField label="Username" name="username" type="text" onChange={handleChange} value={values.username} />
+                                <TextField label="Password" name="password" type="password" onChange={handleChange} value={values.password} />
 
                                 <Button variant="primary" type="submit">Login</Button>
                             </Form>

@@ -75,11 +75,11 @@ const Create = ({createHandler}) => {
                         }) => (
                             <Form>
                                 {flag.check && <Alert variant="danger">{flag.text}</Alert>}
-                                <TextField label="Title" name="title" type="text" />
-                                <TextField label="Image" name="image" type="text" />
-                                <TextField label="Price" name="price" type="number" />
-                                <TextField label="Quantity" name="quantity" type="number" />
-                                <TextField label="Description" name="description" type="textarea" />
+                                <TextField label="Title" name="title" type="text" onChange={handleChange} value={values.title} />
+                                <TextField label="Image" name="image" type="text" onChange={handleChange} value={values.image} />
+                                <TextField label="Price" name="price" type="number" onChange={handleChange} value={values.price} />
+                                <TextField label="Quantity" name="quantity" type="number" onChange={handleChange} value={values.quantity} />
+                                <TextField label="Description" name="description" type="textarea" onChange={handleChange}>{values.description}</TextField>
 
                                 <Button variant="primary" type="submit">Create</Button>
                             </Form>
