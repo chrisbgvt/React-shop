@@ -5,6 +5,7 @@ import './App.css';
 import { AuthProvider } from './contexts/AuthContext';
 import { CartProvider } from './contexts/CartContext';
 import * as productService from './services/productService';
+import { AuthGuard , IsAdminGuard } from './components/Guards/AuthGuard';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Catalog from './components/Catalog/Catalog';
@@ -51,12 +52,16 @@ function App() {
                         {/* <Route path="/" element={<Home />} /> */}
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
-                        <Route path="/logout" element={<Logout />} />
                         <Route path="/catalog" element={<Catalog products={products} />} />
                         <Route path="/catalog/:productId" element={<ProductDetails deleteHandler={deleteProductHandler} />} />
-                        <Route path="/cart" element={<Cart />} />
-                        <Route path="/create" element={<Create createHandler={addProductHandler} />} />
-                        <Route path="/edit/:productId" element={<Edit updateHandler={updateProductHandler} />} />
+                        <Route element={<AuthGuard />}>
+                            <Route path="/logout" element={<Logout />} />
+                            <Route path="/cart" element={<Cart />} />
+                        </Route>
+                        <Route element={<IsAdminGuard />}>
+                            <Route path="/create" element={<Create createHandler={addProductHandler} />} />
+                            <Route path="/edit/:productId" element={<Edit updateHandler={updateProductHandler} />} />
+                        </Route>
                     </Routes>
                 </div>
             </CartProvider>
