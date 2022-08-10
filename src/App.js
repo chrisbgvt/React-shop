@@ -51,7 +51,7 @@ function App() {
             <CartProvider>
                 <Header />
 
-                <div>
+                <div className={'mb-5'}>
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/login" element={<Login />} />
