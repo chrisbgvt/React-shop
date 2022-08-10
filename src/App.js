@@ -6,6 +6,7 @@ import { AuthProvider } from './contexts/AuthContext';
 import { CartProvider } from './contexts/CartContext';
 import * as productService from './services/productService';
 import { AuthGuard , IsAdminGuard } from './components/Guards/AuthGuard';
+import Home from './components/HomePage/HomePage';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Catalog from './components/Catalog/Catalog';
@@ -15,6 +16,7 @@ import Logout from './components/Logout/Logout';
 import Cart from './components/Cart/Cart';
 import Create from './components/Create/Create';
 import Edit from './components/Edit/Edit';
+import PageNotFound from './components/PageNotFound/PageNotFound';
 
 function App() {
     const [products, setProducts] = useState([]);
@@ -49,7 +51,7 @@ function App() {
 
                 <div>
                     <Routes>
-                        {/* <Route path="/" element={<Home />} /> */}
+                        <Route path="/" element={<Home />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
                         <Route path="/catalog" element={<Catalog products={products} />} />
@@ -62,6 +64,7 @@ function App() {
                             <Route path="/create" element={<Create createHandler={addProductHandler} />} />
                             <Route path="/edit/:productId" element={<Edit updateHandler={updateProductHandler} />} />
                         </Route>
+                        <Route path="*" element={<PageNotFound />} />
                     </Routes>
                 </div>
             </CartProvider>
