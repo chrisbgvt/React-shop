@@ -12,6 +12,7 @@ import Register from './components/Register/Register';
 import Catalog from './components/Catalog/Catalog';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import Logout from './components/Logout/Logout';
 import Cart from './components/Cart/Cart';
 import Create from './components/Create/Create';
@@ -69,6 +70,8 @@ function App() {
                         <Route path="*" element={<PageNotFound />} />
                     </Routes>
                 </div>
+
+                <Footer />
             </CartProvider>
         </AuthProvider>
     );
