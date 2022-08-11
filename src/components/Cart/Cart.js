@@ -9,7 +9,7 @@ import * as orderService from '../../services/orderService';
 import { CartContext, useCartContext } from '../../contexts/CartContext';
 import CartItem from './CartItem/CartItem';
 
-const ProductDetails = () => {
+const Cart = () => {
     // const { user } = useAuthContext();
     const { cart } = useCartContext();
     const [items, setItems] = useState([]);
@@ -79,10 +79,13 @@ const ProductDetails = () => {
         <Container>
             <Row>
                 {flag.check && <Alert variant="danger">{flag.text}</Alert>}
-                <Button variant="primary my-3" onClick={() => deleteCartHandler(cart._id)}>Empty cart</Button>
-                {items.map(x => 
-                    <CartItem key={x._id} product={x} />
-                )}
+                <Button variant="secondary my-3" onClick={() => deleteCartHandler(cart._id)}>Empty cart</Button>
+                {items.length > 0 
+                    ? items.map(x => 
+                        <CartItem key={x._id} product={x} />
+                    )
+                    : <p>Cart is empty</p>
+                }
                 <p className={'text-end'}>Total: {totalPrice} lv.</p>
                 <Button variant="primary mt-3 mb-5" onClick={() => orderHandler()}>Order</Button>
             </Row>
@@ -90,4 +93,4 @@ const ProductDetails = () => {
     );
 }
 
-export default ProductDetails;
+export default Cart;

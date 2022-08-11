@@ -8,7 +8,10 @@ const Catalog = ({products}) => {
     return (
         <Container>
             <Row>
-                { products.map(x => <CatalogItem key={x._id} product={x} />) }
+                {products.length > 0
+                    ? products.map(x => <CatalogItem key={x._id} product={x} />)
+                    : <p>No products found</p>
+                }
             </Row>
         </Container>
         

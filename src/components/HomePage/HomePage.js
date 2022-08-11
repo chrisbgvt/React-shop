@@ -28,7 +28,11 @@ const Home = () => {
             <Container>
                 <Row>
                     {flag.check && <Alert variant="danger">{flag.text}</Alert>}
-                    {newProducts.map(x => <CatalogItem key={x._id} product={x} />) }
+                    <h2>New Products</h2>
+                    {newProducts.length > 0
+                        ? newProducts.map(x => <CatalogItem key={x._id} product={x} />)
+                        : <p>No products found</p>
+                    }
                 </Row>
             </Container>
         </>
