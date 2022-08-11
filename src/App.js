@@ -29,8 +29,8 @@ function App() {
                 setProducts(result);
             })
             .catch(err => {
-                console.log(err);
-            });
+                alert(err);
+            })
     }, []);
 
     const addProductHandler = (product) => {
@@ -45,6 +45,19 @@ function App() {
         setProducts(state => state.filter(x => x._id !== deletedProductId));
     }
 
+    const searchHandler = (query) => {
+        if (query.query === '') {
+            productService.getAll()
+                .then(result => {
+                    setProducts(result);
+                })
+                .catch(err => {
+                    alert(err);
+                })
+        } else {
+            setProducts(state => state.filter(x => x.title.toLowerCase().startsWith(query.query.toLowerCase())));
+        }
+    }
 
     return (
         <AuthProvider>
@@ -56,7 +69,7 @@ function App() {
                         <Route path="/" element={<Home />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
-                        <Route path="/catalog" element={<Catalog products={products} />} />
+                        <Route path="/catalog" element={<Catalog products={products} search={searchHandler} />} />
                         <Route path="/catalog/:productId" element={<ProductDetails deleteHandler={deleteProductHandler} />} />
                         <Route element={<AuthGuard />}>
                             <Route path="/logout" element={<Logout />} />
