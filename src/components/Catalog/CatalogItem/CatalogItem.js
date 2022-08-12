@@ -3,7 +3,7 @@ import { Card, Col } from 'react-bootstrap';
 
 const CatalogItem = ({product}) => {
     return (
-        <Col md={4} className={'py-3'}>
+        <Col md={4} className={'py-3'} data-aos="fade-left">
             <Card>
                 <Card.Img variant="top" src={product.image} />
                 <Card.Body>

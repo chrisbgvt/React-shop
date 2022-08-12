@@ -2,7 +2,7 @@ import { Table } from 'react-bootstrap';
 
 const OrderTable = ({userOrders}) => {
     return (
-        <Table striped bordered hover>
+        <Table striped bordered hover data-aos="fade-up">
             <thead>
                 <tr>
                     <th>#</th>

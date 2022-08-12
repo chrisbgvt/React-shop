@@ -9,7 +9,7 @@ const Header = () => {
     const { cart } = useCartContext();
 
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="light" expand="lg" data-aos="zoom-in">
             <Container>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">

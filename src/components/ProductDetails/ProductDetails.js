@@ -85,7 +85,7 @@ const ProductDetails = ({deleteHandler}) => {
                 {flag.check && <Alert variant="danger">{flag.text}</Alert>}
                 <DeleteModal close={handleClose} show={show} del={deleteProductHandler} product={product} />
                 <Col md={6}>
-                    <img src={product.image} width="100%" alt="Product" />
+                    <img src={product.image} width="100%" alt="Product" data-aos="fade-right" />
                 </Col>
                 <Col md={6} className={'d-flex flex-column justify-content-center'}>
                     <h1>{product.title}</h1>
