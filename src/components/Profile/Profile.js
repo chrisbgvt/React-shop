@@ -29,7 +29,9 @@ const Profile = () => {
             <Row>
                 {flag.check && <Alert variant="danger">{flag.text}</Alert>}
                 <Col md={12} className={'my-3'}>
-                    <h1 className={'text-center'}>{user.username}'s orders</h1>
+                    <h1 className={'text-center'}>{user.username}</h1>
+                    <p className={'text-center'}>Role: {user.userRole}</p>
+                    <h4 className={'text-center'}>Orders Table</h4>
                     <div className={'d-flex flex-column justify-content-center align-items-center'}>
                         <OrderTable userOrders={orders} />
                     </div>
