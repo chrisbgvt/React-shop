@@ -12,34 +12,18 @@ import CartItem from './CartItem/CartItem';
 const Cart = () => {
     // const { user } = useAuthContext();
     const { cart } = useCartContext();
-    const [items, setItems] = useState([]);
     const { removeCart } = useContext(CartContext);
     const navigate = useNavigate();
     const [flag, setFlag] = useState({text: '', check: false});
 
     let order = [];
     let totalPrice = 0;
-    items.map(x => order.push(x.title));
-    items.map(x => totalPrice += Number(x.price));
-
-    useEffect(() => {
-        cartService.getOne(cart._id)
-            .then(result => {
-                setItems(state => [...state, ...result.products]);
-            })
-            .catch(err => {
-                setFlag(state => ({
-                    ...state,
-                    text: err.error, 
-                    check: true
-                }));
-            });
-    }, [cart._id])
+    Object.values(cart.products).map(x => order.push(x.title));
+    Object.values(cart.products).map(x => totalPrice += Number(x.price));
 
     const deleteCartHandler = (cartId) => {
         cartService.removeCart(cartId)
             .then(result => {
-                setItems([]);
                 removeCart();
                 navigate('/catalog');
             })
@@ -62,7 +46,6 @@ const Cart = () => {
                     text: result.message, 
                     check: true
                 }));
-                setItems([]);
                 removeCart();
                 navigate('/catalog');
             })
@@ -80,8 +63,8 @@ const Cart = () => {
             <Row>
                 {flag.check && <Alert variant="danger">{flag.text}</Alert>}
                 <Button variant="secondary my-3" onClick={() => deleteCartHandler(cart._id)}>Empty cart</Button>
-                {items.length > 0 
-                    ? items.map(x => 
+                {Object.keys(cart).length > 0 
+                    ? Object.values(cart.products).map(x => 
                         <CartItem key={x._id} product={x} />
                     )
                     : <p>Cart is empty</p>
