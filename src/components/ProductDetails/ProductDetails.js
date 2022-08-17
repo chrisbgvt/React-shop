@@ -93,13 +93,12 @@ const ProductDetails = ({deleteHandler}) => {
                     <p>Price: {product.price} lv.</p>
                     {user.token &&
                         <>
-                            {product.quantity === 0
-                                ? <span class="text-danger">Out of stock</span>
+                            {product.quantity < 1 
+                            || (Object.keys(cart).length > 0 && Object.values(cart.products).map(x => x.productId === product._id ? (product.quantity - x.quantity) < 1 : false)[0])
+                                ? <span className="text-danger">Out of stock</span>
                                 : <Button variant="primary" onClick={() => addToCartHandler(product)}>Add to cart</Button>
                             }
                         </>
-                        
-                        // <Link to={'/cart'} className="btn btn-primary" onClick={() => addToCartHandler(product)}>Add to cart</Link>
                     }
                     
                     <Col md={12} className={'d-flex justify-content-between mt-3'}>
