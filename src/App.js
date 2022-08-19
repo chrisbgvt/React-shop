@@ -22,6 +22,12 @@ import PageNotFound from './components/PageNotFound/PageNotFound';
 
 function App() {
     const [products, setProducts] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage, setItemsPerPage] = useState(6);
+
+    const indexOfLastProduct = currentPage * itemsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
+    const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
 
     useEffect(() => {
         productService.getAll()
@@ -55,8 +61,21 @@ function App() {
                     alert(err);
                 })
         } else {
+            setCurrentPage(1);
             setProducts(state => state.filter(x => x.title.toLowerCase().startsWith(query.query.toLowerCase())));
         }
+    }
+
+    const changePageHandler = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    }
+
+    const previousHandler = () => {
+        setCurrentPage(currentPage => currentPage - 1);
+    }
+
+    const nextHandler = () => {
+        setCurrentPage(currentPage => currentPage + 1);
     }
 
     return (
@@ -69,7 +88,20 @@ function App() {
                         <Route path="/" element={<Home />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
-                        <Route path="/catalog" element={<Catalog products={products} search={searchHandler} />} />
+                        <Route path="/catalog" 
+                            element={
+                                <Catalog 
+                                    products={currentProducts} 
+                                    search={searchHandler} 
+                                    productsPerPage={itemsPerPage} 
+                                    totalProducts={products.length}
+                                    currentPage={currentPage}
+                                    paginate={changePageHandler}
+                                    previous={previousHandler}
+                                    next={nextHandler}
+                                />
+                            } 
+                        />
                         <Route path="/catalog/:productId" element={<ProductDetails deleteHandler={deleteProductHandler} />} />
                         <Route element={<AuthGuard />}>
                             <Route path="/logout" element={<Logout />} />

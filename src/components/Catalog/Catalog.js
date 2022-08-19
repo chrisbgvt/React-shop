@@ -2,8 +2,9 @@ import { Container, Row } from 'react-bootstrap';
 
 import CatalogItem from './CatalogItem/CatalogItem';
 import Search from './Search/Search';
+import Paginate from '../Pagination/Pagination';
 
-const Catalog = ({products, search}) => {
+const Catalog = ({products, search, productsPerPage, totalProducts, currentPage, paginate, previous, next}) => {
     
 
     return (
@@ -14,6 +15,14 @@ const Catalog = ({products, search}) => {
                     ? products.map(x => <CatalogItem key={x._id} product={x} />)
                     : <p>No products found</p>
                 }
+                <Paginate 
+                    productsPerPage={productsPerPage} 
+                    totalProducts={totalProducts} 
+                    paginate={paginate} 
+                    currentPage={currentPage}
+                    previous={previous}
+                    next={next}
+                 />
             </Row>
         </Container>
         
