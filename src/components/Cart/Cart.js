@@ -71,7 +71,7 @@ const Cart = () => {
                     )
                     : <p>Cart is empty</p>
                 }
-                <p className={'text-end'}>Total: {totalPrice} lv.</p>
+                <p className={'text-end mt-4'}>Total: {totalPrice} lv.</p>
                 <Button variant="primary mt-3 mb-5" onClick={() => orderHandler()}>Order</Button>
             </Row>
         </Container>

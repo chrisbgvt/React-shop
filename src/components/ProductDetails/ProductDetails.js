@@ -80,7 +80,7 @@ const ProductDetails = ({deleteHandler}) => {
     }
 
     return (
-        <Container>
+        <Container className={'mt-5'}>
             <Row>
                 {flag.check && <Alert variant="danger">{flag.text}</Alert>}
                 <DeleteModal close={handleClose} show={show} del={deleteProductHandler} product={product} />

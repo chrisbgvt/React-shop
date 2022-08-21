@@ -9,29 +9,29 @@ const Header = () => {
     const { cart } = useCartContext();
 
     return (
-        <Navbar bg="light" expand="lg" data-aos="zoom-in">
+        <Navbar bg="dark" expand="lg" data-aos="zoom-in">
             <Container>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto mx-auto">
-                        <Link className='nav-link' to="/">Home</Link>
-                        <Link className='nav-link' to="/catalog">Catalog</Link>
+                        <Link className='nav-link text-white' to="/">Home</Link>
+                        <Link className='nav-link text-white' to="/catalog">Catalog</Link>
 
                         {user.token
                             ? <>
-                                <Link className='nav-link' to="/create">Create</Link>
-                                <Link className='nav-link' to={Object.keys(cart).length > 0 ? '/cart' : '/'}>
+                                <Link className='nav-link text-white' to="/create">Create</Link>
+                                <Link className='nav-link text-white' to={Object.keys(cart).length > 0 ? '/cart' : '/'}>
                                     Cart
                                     <Badge bg="primary" className={'ml-2'}>
                                         {Object.keys(cart).length > 0 && cart.products.length}
                                     </Badge>
                                 </Link>
-                                <Link className='nav-link' to="/profile">{user.username}</Link>
-                                <Link className='nav-link' to="/logout">Logout</Link>
+                                <Link className='nav-link text-white' to="/profile">{user.username}</Link>
+                                <Link className='nav-link text-white' to="/logout">Logout</Link>
                             </>
                             : <>
-                                <Link className='nav-link' to="/login">Login</Link>
-                                <Link className='nav-link' to="/register">Register</Link>
+                                <Link className='nav-link text-white' to="/login">Login</Link>
+                                <Link className='nav-link text-white' to="/register">Register</Link>
                             </>
                         }
                     </Nav>
