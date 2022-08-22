@@ -36,7 +36,7 @@ const ProductDetails = ({deleteHandler}) => {
     }, [productId])
 
     const addToCartHandler = (productData) => {
-        const { _id, title, image, price, quantity } = productData;
+        const { _id, title, image, price } = productData;
         const product = {
             products: [
                 {
