@@ -2,10 +2,10 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 const Footer = () => {
     return (
-        <>
-            <section className='py-4 bg-light'>
-                <Container>
-                    <Row>
+        <footer className={'footer mt-auto'}>
+            <section className='py-5 bg-light'>
+                <Container className='py-5'>
+                    <Row className='p-3'>
                         <Col md={6}>
                             <h4 className='pt-3'>About us</h4>
                             <p>
@@ -31,13 +31,13 @@ const Footer = () => {
             <section>
                 <Container fluid>
                     <Row>
-                        <footer className={'text-center text-white border-top bg-dark footer mt-auto py-3'}>
+                        <Col className={'text-center text-white border-top bg-dark py-3'}>
                             © 2022 Copyright - React Shop
-                        </footer>
+                        </Col>
                     </Row>
                 </Container>
             </section>
-        </>
+        </footer>
     );
 }
 
