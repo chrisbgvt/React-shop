@@ -66,18 +66,6 @@ function App() {
         }
     }
 
-    const changePageHandler = (pageNumber) => {
-        setCurrentPage(pageNumber);
-    }
-
-    const previousHandler = () => {
-        setCurrentPage(currentPage => currentPage - 1);
-    }
-
-    const nextHandler = () => {
-        setCurrentPage(currentPage => currentPage + 1);
-    }
-
     return (
         <AuthProvider>
             <CartProvider>
@@ -96,9 +84,7 @@ function App() {
                                     productsPerPage={itemsPerPage} 
                                     totalProducts={products.length}
                                     currentPage={currentPage}
-                                    paginate={changePageHandler}
-                                    previous={previousHandler}
-                                    next={nextHandler}
+                                    setCurrentPage={setCurrentPage}
                                 />
                             } 
                         />

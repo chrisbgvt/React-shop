@@ -4,7 +4,7 @@ import CatalogItem from './CatalogItem/CatalogItem';
 import Search from './Search/Search';
 import Paginate from '../Pagination/Pagination';
 
-const Catalog = ({products, search, productsPerPage, totalProducts, currentPage, paginate, previous, next}) => {
+const Catalog = ({products, search, productsPerPage, totalProducts, currentPage, setCurrentPage}) => {
     
 
     return (
@@ -17,11 +17,9 @@ const Catalog = ({products, search, productsPerPage, totalProducts, currentPage,
                 }
                 <Paginate 
                     productsPerPage={productsPerPage} 
-                    totalProducts={totalProducts} 
-                    paginate={paginate} 
+                    totalProducts={totalProducts}
                     currentPage={currentPage}
-                    previous={previous}
-                    next={next}
+                    setCurrentPage={setCurrentPage}
                  />
             </Row>
         </Container>
