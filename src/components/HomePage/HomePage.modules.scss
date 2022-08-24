@@ -1,0 +1,36 @@
+.home-page {
+    section {
+        &.grid-layout {
+            .row {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                column-gap: 25px;
+                row-gap: 25px;
+            }
+        }
+
+        .row {
+            &.reverse {
+                display: flex;
+            }
+        }
+    }
+}
+
+@media all and (max-width: 768px) {
+    .home-page {
+        section {
+            &.grid-layout {
+                .row {
+                    grid-template-columns: repeat(1, minmax(0, 1fr));
+                }
+            }
+    
+            .row {
+                &.reverse {
+                    flex-direction: column-reverse;
+                }
+            }
+        }
+    }
+}

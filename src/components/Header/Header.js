@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Container, Nav, Navbar, Badge } from 'react-bootstrap';
 
+import styles from './Header.modules.scss';
+
 import { useAuthContext } from '../../contexts/AuthContext';
 import { useCartContext } from '../../contexts/CartContext';
 
@@ -20,9 +22,9 @@ const Header = () => {
                         {user.token
                             ? <>
                                 <Link className='nav-link text-white' to="/create">Create</Link>
-                                <Link className='nav-link text-white' to={Object.keys(cart).length > 0 ? '/cart' : '/'}>
+                                <Link className={`nav-link text-white cart ${styles}`} to={Object.keys(cart).length > 0 ? '/cart' : '/'}>
                                     Cart
-                                    <Badge bg="primary" className={'ml-2'}>
+                                    <Badge bg="warning">
                                         {Object.keys(cart).length > 0 && cart.products.length}
                                     </Badge>
                                 </Link>
