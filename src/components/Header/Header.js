@@ -18,6 +18,7 @@ const Header = () => {
                     <Nav className="me-auto mx-auto">
                         <Link className='nav-link text-white' to="/">Home</Link>
                         <Link className='nav-link text-white' to="/catalog">Catalog</Link>
+                        <Link className='nav-link text-white' to="/contact">Contact</Link>
 
                         {user.token
                             ? <>

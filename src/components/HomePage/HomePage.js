@@ -40,7 +40,7 @@ const Home = () => {
                     </Row>
                     <Row className="p-3" data-aos="fade-right">
                         <Col className='border-0 rounded shadow p-4'>
-                            <i class="fa fa-address-book"></i>
+                            <i className="fa fa-address-book"></i>
                             <h3>Title 1</h3>
                             <p>
                                 Lorem ipsum is simply dummy text of the printing and typesetting industry. 
@@ -49,7 +49,7 @@ const Home = () => {
                             </p>
                         </Col>
                         <Col className='border-0 rounded shadow p-4'>
-                            <i class="fa fa-american-sign-language-interpreting"></i>
+                            <i className="fa fa-american-sign-language-interpreting"></i>
                             <h3>Title 2</h3>
                             <p>
                                 Lorem ipsum is simply dummy text of the printing and typesetting industry. 
@@ -58,7 +58,7 @@ const Home = () => {
                             </p>
                         </Col>
                         <Col className='border-0 rounded shadow p-4'>
-                            <i class="fa fa-audio-description"></i>
+                            <i className="fa fa-audio-description"></i>
                             <h3>Title 3</h3>
                             <p>
                                 Lorem ipsum is simply dummy text of the printing and typesetting industry. 
@@ -67,7 +67,7 @@ const Home = () => {
                             </p>
                         </Col>
                         <Col className='border-0 rounded shadow p-4'>
-                            <i class="fa fa-bank"></i>
+                            <i className="fa fa-bank"></i>
                             <h3>Title 4</h3>
                             <p>
                                 Lorem ipsum is simply dummy text of the printing and typesetting industry. 
@@ -76,7 +76,7 @@ const Home = () => {
                             </p>
                         </Col>
                         <Col className='border-0 rounded shadow p-4'>
-                            <i class="fa fa-cart-plus"></i>
+                            <i className="fa fa-cart-plus"></i>
                             <h3>Title 5</h3>
                             <p>
                                 Lorem ipsum is simply dummy text of the printing and typesetting industry. 
@@ -85,7 +85,7 @@ const Home = () => {
                             </p>
                         </Col>
                         <Col className='border-0 rounded shadow p-4'>
-                            <i class="fa fa-cloud-download"></i>
+                            <i className="fa fa-cloud-download"></i>
                             <h3>Title 6</h3>
                             <p>
                                 Lorem ipsum is simply dummy text of the printing and typesetting industry. 

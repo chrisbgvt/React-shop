@@ -18,6 +18,7 @@ import Cart from './components/Cart/Cart';
 import Create from './components/Create/Create';
 import Edit from './components/Edit/Edit';
 import Profile from './components/Profile/Profile';
+import Contact from './components/Contact/Contact';
 import PageNotFound from './components/PageNotFound/PageNotFound';
 
 function App() {
@@ -98,6 +99,7 @@ function App() {
                             <Route path="/create" element={<Create createHandler={addProductHandler} />} />
                             <Route path="/edit/:productId" element={<Edit updateHandler={updateProductHandler} />} />
                         </Route>
+                        <Route path="/contact" element={<Contact />} />
                         <Route path="*" element={<PageNotFound />} />
                     </Routes>
                 </div>

@@ -20,18 +20,18 @@ const Footer = () => {
                             <p className='mb-0'>Street</p>
                             <p>18616</p>
                             <div className='border-top pt-3'>
-                                <i class="fa fa-phone"></i>
+                                <i className="fa fa-phone"></i>
                                 <a href="tel:+5637567568" style={{ textDecoration: 'none', paddingLeft: '.5rem' }}>+5637567568</a>
                             </div>
                             <div>
-                                <i class="fa fa-envelope"></i>
+                                <i className="fa fa-envelope"></i>
                                 <a href="mailto:info@test.co" style={{ textDecoration: 'none', paddingLeft: '.5rem' }}>info@test.co</a>
                             </div>
                         </Col>
                         <Col md={4}>
                             <h4 className='pt-3'>Socials</h4>
-                            <i class="fa fa-facebook-f" style={{ paddingRight: '.3rem' }}></i>
-                            <i class="fa fa-instagram"></i>
+                            <i className="fa fa-facebook-f" style={{ paddingRight: '.3rem' }}></i>
+                            <i className="fa fa-instagram"></i>
                         </Col>
                     </Row>
                 </Container>
