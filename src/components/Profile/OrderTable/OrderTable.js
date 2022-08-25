@@ -7,7 +7,7 @@ const OrderTable = ({userOrders, ordersPerPage, totalOrders, currentPage, setCur
             <Table striped bordered hover data-aos="fade-up">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>ID</th>
                         <th>Ordered products</th>
                         <th>Total price</th>
                     </tr>
@@ -15,7 +15,7 @@ const OrderTable = ({userOrders, ordersPerPage, totalOrders, currentPage, setCur
                 <tbody>
                     {userOrders.map((x, index) => 
                         <tr key={x._id}>
-                            <td>{index + 1}</td>
+                            <td>{x._id}</td>
                             <td>{x.titles.join(', ')}</td>
                             <td>{x.totalPrice} lv.</td>
                         </tr>
