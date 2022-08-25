@@ -6,17 +6,29 @@ const Paginate = ({ productsPerPage, totalProducts, currentPage, setCurrentPage 
         pageNumbers.push(i);
     }
 
+    const prevChangeHandler = () => {
+      setCurrentPage(currentPage => currentPage - 1);
+    }
+
+    const changePageHandler = (pageNumber) => {
+      setCurrentPage(pageNumber);
+    }
+
+    const nextChangeHandler = () => {
+      setCurrentPage(currentPage => currentPage + 1);
+    }
+
     return (
       <Pagination className={'d-flex justify-content-center'}>
-        <Pagination.Prev disabled={currentPage < 2} onClick={() => setCurrentPage(currentPage => currentPage - 1)} />
+        <Pagination.Prev disabled={currentPage < 2} onClick={prevChangeHandler} />
 
         {pageNumbers.map(number => 
-            <Pagination.Item key={number} active={number === currentPage} onClick={() => setCurrentPage(number)}>
+            <Pagination.Item key={number} active={number === currentPage} onClick={() => changePageHandler(number)}>
                 {number}
             </Pagination.Item>
         )}
   
-        <Pagination.Next disabled={currentPage >= (totalProducts / productsPerPage)} onClick={() => setCurrentPage(currentPage => currentPage + 1)} />
+        <Pagination.Next disabled={currentPage >= (totalProducts / productsPerPage)} onClick={nextChangeHandler} />
       </Pagination>
     );
   }
