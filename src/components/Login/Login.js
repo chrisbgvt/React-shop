@@ -22,7 +22,7 @@ const Login = () => {
     });
 
     return (
-        <Container>
+        <Container className="my-5">
             <Row>
                 <Col>
                     <h1>Login</h1>

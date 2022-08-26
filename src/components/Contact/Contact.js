@@ -23,7 +23,7 @@ const Contact = () => {
 
     return (
         <>
-            <Container>
+            <Container className="my-5">
                 <Row>
                     <Col>
                         <h1>Contact</h1>
@@ -71,14 +71,14 @@ const Contact = () => {
                     </Col>
                 </Row>
             </Container>
-            <Container className="mt-5">
+            <Container fluid className="mt-5 px-0">
                 <Row>
                     <Col>
                         <iframe title="map" 
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2914.142765948469!2d25.630260799999995!3d43.080493800000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40a9261070ce92d9%3A0x6ee741acaa9f5e49!2z0LHRg9C7LiDigJ7QktCw0YHQuNC7INCb0LXQstGB0LrQuOKAnCwgNTAwMCDQktC10LvQuNC60L4g0KLRitGA0L3QvtCy0L4g0KbQtdC90YLRitGALCDQktC10LvQuNC60L4g0KLRitGA0L3QvtCy0L4!5e0!3m2!1sbg!2sbg!4v1661462213442!5m2!1sbg!2sbg" 
                             width="100%" 
                             height="450" 
-                            style={{border: 0}} 
+                            style={{border: 0, display: 'block'}} 
                             allowfullscreen="" 
                             loading="lazy" 
                             referrerpolicy="no-referrer-when-downgrade"

@@ -34,7 +34,7 @@ const Create = ({createHandler}) => {
     });
 
     return (
-        <Container>
+        <Container className="my-5">
             <Row>
                 <Col>
                     <h1>Create Product</h1>

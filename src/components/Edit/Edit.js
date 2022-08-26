@@ -58,7 +58,7 @@ const Edit = ({updateHandler}) => {
 
 
     return (
-        <Container>
+        <Container className="my-5">
             <Row>
                 <Col>
                     <h1>Edit Product</h1>
