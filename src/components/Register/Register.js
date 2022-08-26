@@ -26,7 +26,7 @@ const Register = () => {
     });
 
     return (
-        <Container>
+        <Container className="my-5">
             <Row>
                 <Col>
                     <h1>Register</h1>
