@@ -1,10 +1,43 @@
-.cart {
-    position: relative;
+nav {
+    z-index: 1;
+    
+    .navbar-toggler {
+        &:focus {
+            outline: none;
+        }
 
-    .badge {
-        position: absolute;
-        top: 0;
-        right: 0px;
-        padding: 2px;
+        .navbar-toggler-icon {
+            filter: brightness(0) invert(1);
+        }
+    }
+
+    .cart {
+        position: relative;
+
+        &.show {
+            a.nav-link {
+                color: #ffffff;
+            }
+        }
+
+        a.nav-link {
+            color: #ffffff;
+        }
+
+        .dropdown-menu {
+            overflow-y: auto;
+            max-height: 50vh;
+
+            @media all and (min-width: 992px) {
+                min-width: 400px;
+            }
+        }
+
+        .badge {
+            position: absolute;
+            top: 0;
+            right: 4px;
+            padding: 2px;
+        }
     }
 }

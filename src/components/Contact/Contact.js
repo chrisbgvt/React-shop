@@ -79,9 +79,7 @@ const Contact = () => {
                             width="100%" 
                             height="450" 
                             style={{border: 0, display: 'block'}} 
-                            allowfullscreen="" 
                             loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade"
                         ></iframe>
                     </Col>
                 </Row>
