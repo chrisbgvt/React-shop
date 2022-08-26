@@ -1,23 +1,38 @@
-// import { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Row } from 'react-bootstrap';
+import { Container, Row, Button, Alert } from 'react-bootstrap';
 
-import { useCartContext } from '../../../contexts/CartContext';
+import * as cartService from '../../../services/cartService';
+import { CartContext, useCartContext } from '../../../contexts/CartContext';
 import CartItem from '../CartItem/CartItem';
 
 const MiniCart = () => {
     const { cart } = useCartContext();
+    const { removeCart } = useContext(CartContext);
+    const [flag, setFlag] = useState({text: '', check: false});
 
-    let order = [];
     let totalPrice = 0;
-    let orderedProducts = [];
-    Object.values(cart.products).map(x => order.push(x.title));
-    Object.values(cart.products).map(x => totalPrice += Number(x.price));
-    Object.values(cart.products).map(x => orderedProducts.push(x));
+    Object.values(cart.products || {}).map(x => totalPrice += Number(x.price));
+
+    const deleteCartHandler = (cartId) => {
+        cartService.removeCart(cartId)
+            .then(result => {
+                removeCart();
+            })
+            .catch(err => {
+                setFlag(state => ({
+                    ...state,
+                    text: err.error, 
+                    check: true
+                }));
+            });
+    }
 
     return (
         <Container>
             <Row>
+                {flag.check && <Alert variant="danger">{flag.text}</Alert>}
+                <Button variant="secondary my-3 m-auto w-75" onClick={() => deleteCartHandler(cart._id)}>Empty cart</Button>
                 {Object.keys(cart).length > 0 
                     ? Object.values(cart.products).map(x => 
                         <CartItem key={x._id} product={x} />
