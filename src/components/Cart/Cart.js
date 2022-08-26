@@ -19,9 +19,9 @@ const Cart = () => {
     let order = [];
     let totalPrice = 0;
     let orderedProducts = [];
-    Object.values(cart.products).map(x => order.push(x.title));
-    Object.values(cart.products).map(x => totalPrice += Number(x.price));
-    Object.values(cart.products).map(x => orderedProducts.push(x));
+    Object.values(cart.products || {}).map(x => order.push(x.title));
+    Object.values(cart.products || {}).map(x => totalPrice += Number(x.price));
+    Object.values(cart.products || {}).map(x => orderedProducts.push(x));
 
     const deleteCartHandler = (cartId) => {
         cartService.removeCart(cartId)
