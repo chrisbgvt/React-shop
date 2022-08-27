@@ -39,8 +39,14 @@ const Header = () => {
                                         : <p className='d-flex justify-content-center align-items-center mb-0'>Cart is empty</p>
                                     }
                                 </NavDropdown>
-                                <Link className='nav-link text-white' to="/profile">{user.username}</Link>
-                                <Link className='nav-link text-white' to="/logout">Logout</Link>
+                                <NavDropdown title={user.username} className='text-white profile' id="navbarScrollingDropdown2">
+                                    <Link className='nav-link d-flex justify-content-center align-items-center' to="/profile">
+                                        Profile
+                                    </Link>
+                                    <Link className='nav-link d-flex justify-content-center align-items-center' to="/logout">
+                                        Logout
+                                    </Link>
+                                </NavDropdown>
                             </>
                             : <>
                                 <Link className='nav-link text-white' to="/login">Login</Link>

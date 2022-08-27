@@ -32,7 +32,7 @@ const MiniCart = () => {
         <Container>
             <Row>
                 {flag.check && <Alert variant="danger">{flag.text}</Alert>}
-                <Button variant="secondary my-3 m-auto w-75" onClick={() => deleteCartHandler(cart._id)}>Empty cart</Button>
+                <Button variant="secondary m-auto w-75" onClick={() => deleteCartHandler(cart._id)}>Empty cart</Button>
                 {Object.keys(cart).length > 0 
                     ? Object.values(cart.products).map(x => 
                         <CartItem key={x._id} product={x} />
