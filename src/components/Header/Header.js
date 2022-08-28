@@ -13,7 +13,7 @@ const Header = () => {
 
     const navDropdownTitle = (
         <>
-            Cart
+            <img src="./imgs/shopping-cart.png" width="25px" height="25px" alt="Cart" />
             <Badge bg="warning">
                 {Object.keys(cart).length > 0 && cart.products.length}
             </Badge>
