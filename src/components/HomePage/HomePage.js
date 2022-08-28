@@ -123,12 +123,12 @@ const Home = () => {
                             </p>
                         </Col>
                         <Col md={6}>
-                            <img src="./imgs/customer.png" width="100%" alt="Customer"></img>
+                            <img src="./imgs/customer.png" width="100%" alt="Customer" />
                         </Col>
                     </Row>
                     <Row data-aos="fade-left" className='py-4'>
                         <Col md={6}>
-                            <img src="./imgs/customerhappiness.jpg" width="100%" alt="Customer Happiness"></img>
+                            <img src="./imgs/customerhappiness.jpg" width="100%" alt="Customer Happiness" />
                         </Col>
                         <Col md={6} className='d-flex flex-column justify-content-center'>
                             <h4 className='pt-3'>Example Title</h4>
