@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { Container, Row, Col, Alert, Button } from 'react-bootstrap';
+import { Container, Row, Col, Alert, Button, Image } from 'react-bootstrap';
 
 import styles from './ProductDetails.modules.scss';
 
@@ -87,7 +87,7 @@ const ProductDetails = ({deleteHandler}) => {
                 {flag.check && <Alert variant="danger">{flag.text}</Alert>}
                 <DeleteModal close={handleClose} show={show} del={deleteProductHandler} product={product} />
                 <Col md={6}>
-                    <img src={product.image} className='mb-4 mb-md-0' width="100%" height="300px" alt="Product" data-aos="fade-right" />
+                    <Image src={product.image} className='mb-4 mb-md-0' width="100%" height="300px" alt="Product" data-aos="fade-right" />
                 </Col>
                 <Col md={6} className={'d-flex flex-column justify-content-center'}>
                     <h1>{product.title}</h1>

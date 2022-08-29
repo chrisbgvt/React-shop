@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Container, Row, Col, Alert } from 'react-bootstrap';
+import { Container, Row, Col, Alert, Image } from 'react-bootstrap';
 
 import styles from './HomePage.modules.scss';
 
@@ -29,7 +29,7 @@ const Home = () => {
             <section>
                 <Container fluid>
                     <Row>
-                        <img src="./imgs/banner.png" width="100%" alt="Banner" className='px-0' />
+                        <Image src="./imgs/banner.png" width="100%" alt="Banner" className='px-0' />
                     </Row>
                 </Container>
             </section>
@@ -123,12 +123,12 @@ const Home = () => {
                             </p>
                         </Col>
                         <Col md={6}>
-                            <img src="./imgs/customer.png" width="100%" alt="Customer" />
+                            <Image src="./imgs/customer.png" width="100%" alt="Customer" />
                         </Col>
                     </Row>
                     <Row data-aos="fade-left" className='py-4'>
                         <Col md={6}>
-                            <img src="./imgs/customerhappiness.jpg" width="100%" alt="Customer Happiness" />
+                            <Image src="./imgs/customerhappiness.jpg" width="100%" alt="Customer Happiness" />
                         </Col>
                         <Col md={6} className='d-flex flex-column justify-content-center'>
                             <h4 className='pt-3'>Example Title</h4>

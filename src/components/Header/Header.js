@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Container, Nav, Navbar, Badge, NavDropdown } from 'react-bootstrap';
+import { Container, Nav, Navbar, Badge, NavDropdown, Image } from 'react-bootstrap';
 
 import styles from './Header.modules.scss';
 
@@ -13,7 +13,7 @@ const Header = () => {
 
     const navDropdownTitle = (
         <>
-            <img src="./imgs/shopping-cart.png" width="25px" height="25px" alt="Cart" />
+            <Image src="./imgs/shopping-cart.png" width="25px" height="25px" alt="Cart" />
             <Badge bg="warning">
                 {Object.keys(cart).length > 0 && cart.products.length}
             </Badge>
