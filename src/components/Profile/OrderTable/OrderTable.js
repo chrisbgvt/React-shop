@@ -1,10 +1,11 @@
 import { Table } from 'react-bootstrap';
 import Paginate from '../../Pagination/Pagination';
+import styles from './OrderTable.modules.scss';
 
 const OrderTable = ({userOrders, ordersPerPage, totalOrders, currentPage, setCurrentPage}) => {
     return (
         <>
-            <Table striped bordered hover data-aos="fade-up">
+            <Table responsive striped bordered hover data-aos="fade-up" className={styles}>
                 <thead>
                     <tr>
                         <th>ID</th>
