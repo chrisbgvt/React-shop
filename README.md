@@ -13,3 +13,8 @@ For backend i use my other project [https://github.com/chrisbgvt/ecommerce-api](
 ## Sample screenshots
 
 ![Home page](./public/imgs/home-page.png)
+![Catalog page](./public/imgs/catalog-page.png)
+![Contact page](./public/imgs/contact.png)
+![Profile page](./public/imgs/profile-page.png)
+![Cart page](./public/imgs/cart-page.png)
+![Minicart](./public/imgs/minicart.png)
