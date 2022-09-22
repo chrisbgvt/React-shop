@@ -12,4 +12,4 @@ For backend i use my other project [https://github.com/chrisbgvt/ecommerce-api](
 
 ## Sample screenshots
 
-![Home page](image.png)
+![Home page](./imgs/home-page.png)
