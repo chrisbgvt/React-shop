@@ -4,8 +4,12 @@ Basic React shop implementation for learning purposes, you can register, login, 
 
 ## How to check it out
 
-Clone the project from this repository. Run `npm install` after that `npm start` and the app will start on [http://localhost:3000](http://localhost:3000) in your browser. To have data persistence you need to install on your machine MongoDB [https://www.mongodb.com/](https://www.mongodb.com/). 
+Clone the project from this repository. Run `npm install` after that `npm start` and the app will start on [http://localhost:3000](http://localhost:3000) in your browser. 
 
 ## API
 
 For backend i use my other project [https://github.com/chrisbgvt/ecommerce-api](https://github.com/chrisbgvt/ecommerce-api).
+
+## Sample screenshots
+
+![Home page](image.png)
