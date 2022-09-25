@@ -18,6 +18,10 @@ username: Chris
 pass: 123456
 ```
 
+## Tests
+
+Run `npm test` and then press letter `a` to run all tests.
+
 ## API
 
 For backend i use my other project [https://github.com/chrisbgvt/ecommerce-api](https://github.com/chrisbgvt/ecommerce-api).
